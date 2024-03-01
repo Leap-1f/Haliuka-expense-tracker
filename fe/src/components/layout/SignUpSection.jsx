@@ -22,7 +22,7 @@ export function SignUpSection() {
   return (
     <div className="w-[384px] flex flex-col gap-10 flex-1 justify-center items-center">
       <div className="flex justify-center">
-        <Logo width={"25"} height={"24"} addClass={"gap-2"} />
+        <Logo width={"25"} height={"24"} width2={49} height2={18} addClass={"gap-2"} />
       </div>
       <div className="flex flex-col items-center">
         <h1 className="text-2xl font-bold text-slate-900">

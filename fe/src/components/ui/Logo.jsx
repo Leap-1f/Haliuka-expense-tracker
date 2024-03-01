@@ -1,6 +1,6 @@
-const Logo = ({ width, height, addClass }) => {
+const Logo = ({ width, height, width2, height2, addClass }) => {
   return (
-    <div className={`flex ${addClass}`}>
+    <div className={`flex ${addClass} items-center`}>
       <svg
         width={width}
         height={height}
@@ -15,9 +15,9 @@ const Logo = ({ width, height, addClass }) => {
         />
       </svg>
       <svg
-        width="49"
-        height="18"
-        viewBox="0 0 49 18"
+        width={width2}
+        height={height2}
+        viewBox={`0 0 ${width2} ${height2}`}
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
