@@ -1,0 +1,102 @@
+[
+    {
+        "id": 1,
+        "email": "john.doe@example.com",
+        "name": "John Doe",
+        "password": "Password@1",
+        "avatar_img": "https://via.placeholder.com/50x50",
+        "createdAt": "2023-10-29T12:34:56Z",
+        "updatedAt": "2023-11-02T08:12:30Z",
+        "currency_type": "MNT"
+    },
+    {
+        "id": 2,
+        "email": "emma.smith@example.com",
+        "name": "Emma Smith",
+        "password": "P@ssw0rd",
+        "avatar_img": "https://via.placeholder.com/50x50",
+        "createdAt": "2023-10-30T10:20:45Z",
+        "updatedAt": "2023-11-01T14:55:23Z",
+        "currency_type": "USD"
+    },
+    {
+        "id": 3,
+        "email": "alexander.jones@example.com",
+        "name": "Alexander Jones",
+        "password": "Welcome@123",
+        "avatar_img": "https://via.placeholder.com/50x50",
+        "createdAt": "2023-11-02T09:15:00Z",
+        "updatedAt": "2023-11-02T11:30:18Z",
+        "currency_type": "MNT"
+    },
+    {
+        "id": 4,
+        "email": "olivia.brown@example.com",
+        "name": "Olivia Brown",
+        "password": "Passw0rd!",
+        "avatar_img": "https://via.placeholder.com/50x50",
+        "createdAt": "2023-11-01T08:40:22Z",
+        "updatedAt": "2023-11-03T16:45:01Z",
+        "currency_type": "USD"
+    },
+    {
+        "id": 5,
+        "email": "william.taylor@example.com",
+        "name": "William Taylor",
+        "password": "Secret@123",
+        "avatar_img": "https://via.placeholder.com/50x50",
+        "createdAt": "2023-10-31T17:22:10Z",
+        "updatedAt": "2023-11-03T09:10:55Z",
+        "currency_type": "MNT"
+    },
+    {
+        "id": 6,
+        "email": "sophia.miller@example.com",
+        "name": "Sophia Miller",
+        "password": "Pa$$w0rd",
+        "avatar_img": "https://via.placeholder.com/50x50",
+        "createdAt": "2023-11-02T14:18:30Z",
+        "updatedAt": "2023-11-03T12:25:40Z",
+        "currency_type": "USD"
+    },
+    {
+        "id": 7,
+        "email": "noah.anderson@example.com",
+        "name": "Noah Anderson",
+        "password": "Hello@123",
+        "avatar_img": "https://via.placeholder.com/50x50",
+        "createdAt": "2023-11-03T10:05:15Z",
+        "updatedAt": "2023-11-03T15:50:20Z",
+        "currency_type": "MNT"
+    },
+    {
+        "id": 8,
+        "email": "isabella.martin@example.com",
+        "name": "Isabella Martin",
+        "password": "P@ssword123",
+        "avatar_img": "https://via.placeholder.com/50x50",
+        "createdAt": "2023-10-30T16:30:50Z",
+        "updatedAt": "2023-11-02T17:40:05Z",
+        "currency_type": "USD"
+    },
+    {
+        "id": 9,
+        "email": "james.thompson@example.com",
+        "name": "James Thompson",
+        "password": "Secure!123",
+        "avatar_img": "https://via.placeholder.com/50x50",
+        "createdAt": "2023-10-31T11:55:00Z",
+        "updatedAt": "2023-11-01T14:20:30Z",
+        "currency_type": "MNT"
+    },
+    {
+        "id": 10,
+        "email": "olivia.wilson@example.com",
+        "name": "Olivia Wilson",
+        "password": "P@ssw0rd",
+        "avatar_img": "https://via.placeholder.com/50x50",
+        "createdAt": "2023-11-01T09:40:45Z",
+        "updatedAt": "2023-11-03T08:15:50Z",
+        "currency_type": "USD"
+    }
+]

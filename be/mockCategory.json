@@ -1,0 +1,82 @@
+[
+    {
+        "id": "",
+        "name": "Groceries",
+        "description": "Expenses related to purchasing groceries and household items.",
+        "createdAt": "2023-11-05T09:30:00Z",
+        "updatedAt": "2023-11-05T09:30:00Z",
+        "category_image": "https://example.com/groceries-icon.jpg"
+    },
+    {
+        "id": "",
+        "name": "Paycheck",
+        "description": "Income received from employer or freelance work.",
+        "createdAt": "2023-11-05T10:45:00Z",
+        "updatedAt": "2023-11-05T10:45:00Z",
+        "category_image": "https://example.com/paycheck-icon.jpg"
+    },
+    {
+        "id": "",
+        "name": "Transport",
+        "description": "Expenses related to transportation such as fuel, public transport fares, and vehicle maintenance.",
+        "createdAt": "2023-11-05T11:20:00Z",
+        "updatedAt": "2023-11-05T11:20:00Z",
+        "category_image": "https://example.com/transport-icon.jpg"
+    },
+    {
+        "id": "",
+        "name": "Health",
+        "description": "Expenses related to healthcare services, medical bills, and wellness products.",
+        "createdAt": "2023-11-05T13:15:00Z",
+        "updatedAt": "2023-11-05T13:15:00Z",
+        "category_image": "https://example.com/health-icon.jpg"
+    },
+    {
+        "id": "",
+        "name": "Dining Out",
+        "description": "Expenses related to eating at restaurants, cafes, and fast-food outlets.",
+        "createdAt": "2023-11-05T14:00:00Z",
+        "updatedAt": "2023-11-05T14:00:00Z",
+        "category_image": "https://example.com/dining-out-icon.jpg"
+    },
+    {
+        "id": "",
+        "name": "Utilities",
+        "description": "Expenses related to utility bills such as electricity, water, and gas.",
+        "createdAt": "2023-11-05T15:30:00Z",
+        "updatedAt": "2023-11-05T15:30:00Z",
+        "category_image": "https://example.com/utilities-icon.jpg"
+    },
+    {
+        "id": "",
+        "name": "Entertainment",
+        "description": "Expenses related to leisure activities such as movies, concerts, and recreational events.",
+        "createdAt": "2023-11-05T16:45:00Z",
+        "updatedAt": "2023-11-05T16:45:00Z",
+        "category_image": "https://example.com/entertainment-icon.jpg"
+    },
+    {
+        "id": "",
+        "name": "Home Maintenance",
+        "description": "Expenses related to maintaining and repairing home appliances, fixtures, and structures.",
+        "createdAt": "2023-11-05T17:20:00Z",
+        "updatedAt": "2023-11-05T17:20:00Z",
+        "category_image": "https://example.com/home-maintenance-icon.jpg"
+    },
+    {
+        "id": "",
+        "name": "Education",
+        "description": "Expenses related to tuition fees, textbooks, and educational supplies.",
+        "createdAt": "2023-11-05T18:00:00Z",
+        "updatedAt": "2023-11-05T18:00:00Z",
+        "category_image": "https://example.com/education-icon.jpg"
+    },
+    {
+        "id": "",
+        "name": "Investments",
+        "description": "Income generated from investments such as stocks, bonds, and real estate.",
+        "createdAt": "2023-11-05T19:00:00Z",
+        "updatedAt": "2023-11-05T19:00:00Z",
+        "category_image": "https://example.com/investments-icon.jpg"
+    }
+]

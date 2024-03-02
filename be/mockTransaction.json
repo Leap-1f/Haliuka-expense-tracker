@@ -1,0 +1,112 @@
+[
+    {
+        "id": "",
+        "user_id": "",
+        "name": "John Doe",
+        "amount": 350000,
+        "transaction_type": "income",
+        "description": "Salary for the month of October",
+        "createdAt": "2023-11-03T09:30:00Z",
+        "updatedAt": "2023-11-03T09:30:00Z",
+        "category_id": ""
+    },
+    {
+        "id": "",
+        "user_id": "",
+        "name": "Emma Smith",
+        "amount": 200,
+        "transaction_type": "expense",
+        "description": "Grocery shopping at the local market",
+        "createdAt": "2023-11-03T10:45:00Z",
+        "updatedAt": "2023-11-03T10:45:00Z",
+        "category_id": ""
+    },
+    {
+        "id": "",
+        "user_id": "",
+        "name": "Alexander Jones",
+        "amount": 120000,
+        "transaction_type": "income",
+        "description": "Bonus received for outstanding performance",
+        "createdAt": "2023-11-03T11:20:00Z",
+        "updatedAt": "2023-11-03T11:20:00Z",
+        "category_id": ""
+    },
+    {
+        "id": "",
+        "user_id": "",
+        "name": "Olivia Brown",
+        "amount": 75,
+        "transaction_type": "expense",
+        "description": "Dinner at a fancy restaurant with friends",
+        "createdAt": "2023-11-03T13:15:00Z",
+        "updatedAt": "2023-11-03T13:15:00Z",
+        "category_id": ""
+    },
+    {
+        "id": "",
+        "user_id": "",
+        "name": "William Taylor",
+        "amount": 500000,
+        "transaction_type": "income",
+        "description": "Freelance project payment",
+        "createdAt": "2023-11-03T14:00:00Z",
+        "updatedAt": "2023-11-03T14:00:00Z",
+        "category_id": ""
+    },
+    {
+        "id": "",
+        "user_id": "",
+        "name": "Sophia Wilson",
+        "amount": 110,
+        "transaction_type": "expense",
+        "description": "Electricity bill payment",
+        "createdAt": "2023-11-04T09:30:00Z",
+        "updatedAt": "2023-11-04T09:30:00Z",
+        "category_id": ""
+    },
+    {
+        "id": "",
+        "user_id": "",
+        "name": "Ethan Miller",
+        "amount": 300,
+        "transaction_type": "income",
+        "description": "Sell old books online",
+        "createdAt": "2023-11-04T10:45:00Z",
+        "updatedAt": "2023-11-04T10:45:00Z",
+        "category_id": ""
+    },
+    {
+        "id": "",
+        "user_id": "",
+        "name": "Ava Garcia",
+        "amount": 65,
+        "transaction_type": "expense",
+        "description": "Movie tickets for family outing",
+        "createdAt": "2023-11-04T11:20:00Z",
+        "updatedAt": "2023-11-04T11:20:00Z",
+        "category_id": ""
+    },
+    {
+        "id": "",
+        "user_id": "",
+        "name": "James Martinez",
+        "amount": 600,
+        "transaction_type": "income",
+        "description": "Consultation fee from client",
+        "createdAt": "2023-11-04T13:15:00Z",
+        "updatedAt": "2023-11-04T13:15:00Z",
+        "category_id": ""
+    },
+    {
+        "id": "",
+        "user_id": "",
+        "name": "Isabella Brown",
+        "amount": 150,
+        "transaction_type": "expense",
+        "description": "Shopping for new clothes",
+        "createdAt": "2023-11-04T14:00:00Z",
+        "updatedAt": "2023-11-04T14:00:00Z",
+        "category_id": ""
+    }
+]

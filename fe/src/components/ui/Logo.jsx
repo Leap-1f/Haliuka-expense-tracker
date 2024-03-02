@@ -1,10 +1,10 @@
-const Logo = ({ width, height, width2, height2, addClass }) => {
+const Logo = ({ width, height, addClass }) => {
   return (
     <div className={`flex ${addClass} items-center`}>
       <svg
-        width={width}
-        height={height}
-        viewBox={`0 0 ${width} ${height}`}
+        width="25"
+        height="24"
+        viewBox="0 0 25 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -15,9 +15,9 @@ const Logo = ({ width, height, width2, height2, addClass }) => {
         />
       </svg>
       <svg
-        width={width2}
-        height={height2}
-        viewBox={`0 0 ${width2} ${height2}`}
+        width="57"
+        height="20"
+        viewBox="0 0 57 20"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >

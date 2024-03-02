@@ -14,31 +14,23 @@ module.exports = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
     },
-    daisyui: {
-      themes: [
-        {
-          mytheme: {
-            primary: "#0166ff",
-
-            secondary: "#f3f4f6",
-
-            accent: "#16a34a",
-
-            neutral: "#84cc16",
-
-            "base-100": "#ffffff",
-
-            info: "#0000ff",
-
-            success: "#00ffff",
-
-            warning: "#00ff00",
-
-            error: "#ff0000",
-          },
+  },
+  daisyui: {
+    themes: [
+      {
+        mytheme: {
+          primary: "#0166FF",
+          secondary: "#E5E7EB",
+          accent: "#16A34A",
+          neutral: "#84cc16",
+          "base-100": "#ffffff",
+          info: "#0000ff",
+          success: "#00ffff",
+          warning: "#00ff00",
+          error: "#ff0000",
         },
-      ],
-    },
+      },
+    ],
   },
   plugins: [require("daisyui")],
 };

@@ -1,28 +1,51 @@
 import { Button, Input, Text, Logo } from "../components/ui/index";
+import { useState, useRef } from "react";
 
 export default function Currency() {
+  const selectRef = useRef(null);
+  const [step, setStep] = useState(1);
+  const [text, setText] = useState(
+    "Your base currency should be the one you use most often. All transaction in other currencies will be calculated based on this one."
+  );
+
+  const handleConfirm = () => {
+    const selectedCurrency = selectRef.current.value;
+
+    setStep(step + 1);
+
+    // if (step === 1) {
+    //   setText("How much cash do you have in your wallet?");
+    //   setStep(2);
+    // } else if (step === 2) {
+    //   setText(
+    //     "Your very first account has been created. Now continue to dashboard and start tracking"
+    //   );
+    //   setStep(3);
+    // }
+  };
+
   return (
     <div>
       {/* Header */}
-      <div className="flex flex-col gap-12">
-        <Logo
-          width={29}
-          height={28}
-          width2={57}
-          height2={20}
-          addClass={"gap-2"}
-        />
+      <div className="flex flex-col gap-12 items-center my-10">
+        <Logo width="29" height="28" addClass={"gap-2 scale-125"} />
         <div>
-          <ul className="steps">
-            <li data-theme="expenseTracker" className="step step-primary">
+          <ul className="steps text-sm">
+            <li className={`step ${step === 1 ? "step-primary" : ""} px-5`}>
               Currency
             </li>
-            <li className="step">Balance</li>
-            <li className="step">Finish</li>
+            <li className={`step ${step === 2 ? "step-primary" : ""}`}>
+              Balance
+            </li>
+            <li className={`step ${step === 3 ? "step-primary" : ""}`}>
+              Finish
+            </li>
           </ul>
         </div>
       </div>
-      <div className="flex flex-col items-center">
+      {/* Container */}
+      <div className="flex flex-col items-center mt-44">
+        {/* Logo */}
         <div className="bg-blue btn-circle flex items-center justify-center">
           <svg
             width="32"
@@ -40,29 +63,32 @@ export default function Currency() {
             </g>
           </svg>
         </div>
+        {/* Title */}
         <Text
           text={"Select base currency"}
           addClass={"text-2xl font-bold text-slate-900 text-center"}
         />
-        <div className="max-w-[384px] mt-6">
-          <div className="flex flex-col items-center">
+        <div className="mt-6">
+          <div className="max-w-[384px] flex flex-col items-center">
             <select
               name="currency"
               id="currency"
+              ref={selectRef}
               className="select select-bordered w-full max-w-xs bg-gray-100 font-bold"
             >
               <option value="mnt">MNT - Mongolian Tugrik</option>
               <option value="usd">USD - United States Dollar</option>
             </select>
-            <Text
-              text={
-                "Your base currency should be the one you use most often. All transaction in other currencies will be calculated based on this one "
-              }
-              addClass={"text-slate-600 text-xs mt-2 mb-8 text-center"}
-            />
+            <Text text={text} addClass={"text-slate-600 text-xs mt-2 mb-8"} />
           </div>
         </div>
-          <Button text={"Confirm"} />
+      </div>
+      {/* Button */}
+      <div className="max-w-[384px] mx-auto">
+        <Button
+          text={step === 3 ? "Finish" : "Confirm"}
+          onClick={handleConfirm}
+        />
       </div>
     </div>
   );
