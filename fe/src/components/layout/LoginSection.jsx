@@ -18,7 +18,7 @@ export function LoginSection() {
           addClass={"text-slate-700"}
         />
       </div>
-      <form onSubmit={validateUser} className="flex flex-col gap-4 w-[384px] px-4 sm:px-0">
+      <form className="flex flex-col gap-4 w-[384px] px-4 sm:px-0">
         <Input addClass={"w-full"} placeholder={"Email"} type={"email"} />
         <Input addClass={"w-full"} placeholder={"Password"} type={"password"} />
         <Button text={"Log up"} />
