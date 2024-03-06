@@ -4,17 +4,35 @@ import { useState, useRef } from "react";
 export default function Currency() {
   const selectRef = useRef(null);
   const [step, setStep] = useState(1);
-  const [data, setData] = useState(
-    {title: "Select base currency"}
-  )
+  const [data, setData] = useState({
+    title: "Select base currency",
+    text: "Your base currency should be the one you use most often. All transaction in other currencies will be calculated based on this one ",
+    currency: "MNT",
+    button: "Confirm",
+    textClass: "text-slate-600 text-xs mt-2 mb-8",
+  });
 
   const handleConfirm = () => {
-    const selectedCurrency = selectRef.current.value;
-    console.log("button daragdlaa");
-
     setStep(step + 1);
-    if (step === 2) {
-      setData("Set up your cash Balance")
+    if (step === 1) {
+      const selectedCurrency = selectRef.current.value;
+      setData({
+        ...data,
+        title: "Set up your cash Balance",
+        text: "How much cash do you have in your wallet?",
+      });
+
+      if (selectedCurrency === "usd") {
+        setData({ ...data, currency: "USD" });
+      }
+    } else if (step === 2) {
+      setData({
+        ...data,
+        title: "Good Job!",
+        text: "Your very first account has been created. Now continue to dashboard and start tracking",
+        button: "Go to Dashboard",
+        textClass: "text-slate-600 text-base mt-2 mb-8 text-center",
+      });
     }
   };
 
@@ -25,7 +43,7 @@ export default function Currency() {
         <Logo width="29" height="28" addClass={"gap-2 scale-125"} />
         <div>
           <ul className="steps text-sm">
-            <li className="step step-primary px-5">Currency</li>
+            <li className="step step-primary px-6">Currency</li>
             <li className={`step ${step === 1 ? "" : "step-primary"}`}>
               Balance
             </li>
@@ -93,28 +111,37 @@ export default function Currency() {
           />
           <div className="mt-6">
             <div className="max-w-[384px] flex flex-col items-center">
-              <select
-                name="currency"
-                id="currency"
-                ref={selectRef}
-                className="select select-bordered w-full max-w-xs bg-gray-100 font-bold"
-              >
-                <option value="mnt">MNT - Mongolian Tugrik</option>
-                <option value="usd">USD - United States Dollar</option>
-              </select>
-              <Text
-                text={
-                  "Your base currency should be the one you use most often. All transaction in other currencies will be calculated based on this one."
-                }
-                addClass={"text-slate-600 text-xs mt-2 mb-8"}
-              />
+              {step === 1 && (
+                <select
+                  name="currency"
+                  id="currency"
+                  ref={selectRef}
+                  className="select select-bordered w-full max-w-xs bg-gray-100 font-bold"
+                >
+                  <option value="mnt">MNT - Mongolian Tugrik</option>
+                  <option value="usd">USD - United States Dollar</option>
+                </select>
+              )}
+              {step === 2 && (
+                <div className="relative">
+                  <Input
+                    placeholder={"Amount"}
+                    type={"text"}
+                    addClass={"w-[352px] relative"}
+                  ></Input>
+                  <p className="font-bold absolute top-3 right-3">
+                    {data.currency}
+                  </p>
+                </div>
+              )}
+              <Text text={data.text} addClass={data.textClass} />
             </div>
           </div>
         </div>
       }
       {/* Button */}
       <div className="max-w-[384px] mx-auto">
-        <Button text="Confirm" onClick={handleConfirm} />
+        <Button text={data.button} onClick={handleConfirm} />
       </div>
     </div>
   );

@@ -5,7 +5,6 @@ dotenv.config();
 
 let { PGHOST, PGDATABASE, PGUSER, PGPASSWORD, ENDPOINT_ID } = process.env;
 
-// console.log(PGHOST, PGDATABASE, PGPASSWORD, PGUSER);
 
 export const sql = postgres({
   host: PGHOST,
