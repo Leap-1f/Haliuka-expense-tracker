@@ -1,8 +1,8 @@
 import {Router} from 'express';
-import {getAllUsers, addNewUser} from '../controller/user.js';
+import {addNewUser} from '../controller/user.js';
 
-const users = Router();
+const user = Router();
 
-users.route("/").get(getAllUsers).post(addNewUser);
+user.route("/").post(addNewUser);
 
-export {users};
+export {user};
