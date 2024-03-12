@@ -36,6 +36,7 @@ export function SignUpSection() {
       console.error("Error:", error);
     }
   };
+  
   return (
     <div className="w-[384px] flex flex-col gap-10 flex-1 justify-center items-center">
       <div className="flex justify-center">

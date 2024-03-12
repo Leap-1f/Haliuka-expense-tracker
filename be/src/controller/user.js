@@ -1,15 +1,12 @@
 import { sql } from "../../config/database.js";
 
-// export const getAllUsers = async (req, res) => {
-//   console.log("ajillaa");
-//   try {
-//     const data = await sql`SELECT * FROM users`;
-//     res.send(data);
-//     console.log(data);
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
+export const getOneUser = async (req, res) => {
+  try {
+    const result = await sql `SELECT * FROM users`;
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 export const addNewUser = async (req, res) => {
   const newUser = req.body;
