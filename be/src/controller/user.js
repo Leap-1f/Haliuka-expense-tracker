@@ -1,8 +1,10 @@
 import { sql } from "../../config/database.js";
+import bcrypt from "bcrypt";
 
 export const getOneUser = async (req, res) => {
   try {
-    const result = await sql `SELECT * FROM users`;
+    const result = await sql`SELECT * FROM users`;
+    res.send(result);
   } catch (err) {
     console.log(err);
   }
@@ -10,13 +12,35 @@ export const getOneUser = async (req, res) => {
 
 export const addNewUser = async (req, res) => {
   const newUser = req.body;
-  console.log(newUser);
+  const salt = bcrypt.genSaltSync(1);
+  const hashedPassword = await bcrypt.hash(newUser.password, salt);
   try {
     const result =
-      await sql`INSERT INTO users(name, email, password) VALUES(${newUser.name}, ${newUser.email}, ${newUser.password}) RETURNING *`;
-    res.send(result);
+      await sql`INSERT INTO users(name, email, password, currency_type, balance) VALUES(${newUser.name}, ${newUser.email}, ${hashedPassword}, ${newUser.currency_type}, ${newUser.amount}) RETURNING *`;
+    res.status(201).json(result);
   } catch (err) {
     console.error(err);
     res.status(400).json({ message: "Failed to add new user" });
+  }
+};
+
+export const loginUser = async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const data = await sql`SELECT * FROM users WHERE email = ${email}`;
+    if (data.length === 0) {
+      return res.status(404).send("User not found");
+    }
+    const isValid = await bcrypt.compare(password, data[0].password);
+    if (isValid) {
+      res.status(200).send({
+        user: { email: data.email, password: data.password },
+      });
+    } else {
+      res.status(401).send("Invalid email or password");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).json({ error: "server error" });
   }
 };

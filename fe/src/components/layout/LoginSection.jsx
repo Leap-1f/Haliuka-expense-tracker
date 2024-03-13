@@ -1,17 +1,19 @@
 import { Button, Input, Text, Logo } from "../ui/index";
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 export function LoginSection() {
+  const router = useRouter();
   const [data, setData] = useState({
     email: "",
-    password: "",
+    password: ""
   })
+  const [error, setError] = useState("");
 
-  const checkUser = async () => {
+  const loginUser = async () => {
     try {
-      console.log(data);
-      const response = await fetch("http://localhost:8080/", {
+      const response = await fetch("http://localhost:8080/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -20,10 +22,10 @@ export function LoginSection() {
       });
 
       if (response.ok) {
-        const responseData = await response.json();
-        console.log(responseData);
+        const data = await response.json();
+        router.push("/Dashboard")
       } else {
-        throw new Error("Failed to create new user");
+        throw new Error("Invalid email or password");
       }
     } catch (error) {
       console.error("Error:", error);
@@ -49,7 +51,7 @@ export function LoginSection() {
       <div className="flex flex-col gap-4 w-[384px] px-4 sm:px-0">
         <Input addClass={"w-full"} name="email" onChange={(ev) => setData({...data, email: ev.target.value})} placeholder={"Email"} type={"email"} />
         <Input addClass={"w-full"} name="password" onChange={(ev) => setData({...data, password: ev.target.value})} placeholder={"Password"} type={"password"} />
-        <Button text={"Log in"} onClick={checkUser}/>
+        <Button text={"Log in"} onClick={loginUser}/>
       </div>
       <p className="text-center">
         Don't have an account?{" "}
