@@ -1,10 +1,8 @@
 import { Button, Input, Text, Logo } from "../components/ui/index";
 import { useState, useRef } from "react";
-import { useUserData } from "../components/utils/Context";
 import {router} from "next/router";
 
 export default function Currency() {
-  const { userData, setUserData } = useUserData();
   const selectRef = useRef(null);
   const [step, setStep] = useState(1);
   const [currency, setCurrency] = useState("MNT");
