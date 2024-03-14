@@ -31,7 +31,7 @@ export function LoginSection() {
 
       if (response.ok) {
         const responseData = await response.json();
-      router.push("/Dashboard");
+      router.push("/dashboard");
       } else {
         const errorData = await response.json();
         throw new Error(errorData.message || "Invalid email or password");
@@ -80,8 +80,8 @@ export function LoginSection() {
       </div>
       <p className="text-center">
         Don't have an account?{" "}
-        <Link href="/SignUp">
-          <span className="text-blue ml-2">Sign up</span>
+        <Link href="/signup">
+          <span className="text-primary ml-2">Sign up</span>
         </Link>
       </p>
     </div>

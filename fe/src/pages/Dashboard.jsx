@@ -21,7 +21,7 @@ export default function Dashboard() {
   return (
     <div>
       {/* Navbar */}
-      <Navbar></Navbar>
+      <Navbar dashboard={"font-bold"}></Navbar>
       {/* container */}
       <div className="bg-gray-100">
         <div className="container mx-auto pt-10">

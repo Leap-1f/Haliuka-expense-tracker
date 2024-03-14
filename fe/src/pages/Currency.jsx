@@ -112,7 +112,7 @@ export default function Currency() {
       {
         <div className="flex flex-col items-center mt-44">
           {/* Logo */}
-          <div className="bg-blue btn-circle flex items-center justify-center">
+          <div className="bg-primary btn-circle flex items-center justify-center">
             {/* SVGs for steps 1, 2, and 3 */}
           </div>
           {/* Title */}

@@ -52,14 +52,14 @@ export function SignUpSection() {
           placeholder={"Repeat password"}
           type={"password"}
         />
-        <Link href="/Currency">
+        <Link href="/currency">
           <Button text={"Sign up"} addClass={"bg-primary"} onClick={createUser} />
         </Link>
       </div>
       <p className="text-center">
         Already have an account?{" "}
         <Link href="/">
-          <span className="text-blue ml-2">Log in</span>
+          <span className="text-primary ml-2">Log in</span>
         </Link>
       </p>
     </div>
