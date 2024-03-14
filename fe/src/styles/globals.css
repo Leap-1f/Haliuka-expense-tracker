@@ -2,9 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-.bg-blue {
-  background: #0166ff;
-}
+
 .text-blue {
   color: #0166ff;
 }
+

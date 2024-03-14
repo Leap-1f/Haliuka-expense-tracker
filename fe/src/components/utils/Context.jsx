@@ -9,19 +9,20 @@ export const ContextProvider = ({ children }) => {
     password: "",
     repassword: "",
   });
+  const [loading, setLoading] = useState(false);
 
   const value = {
     userData,
     setUserData,
+    loading,
+    setLoading,
   };
 
   return (
-    <StateContext.Provider value={value}>
-      {children}
-    </StateContext.Provider>
+    <StateContext.Provider value={value}>{children}</StateContext.Provider>
   );
 };
 
-export const useUserData = () => {
+export const useData = () => {
   return useContext(StateContext);
 };

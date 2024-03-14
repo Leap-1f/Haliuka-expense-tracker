@@ -1,6 +1,4 @@
 import { Navbar } from "../components/ui/index";
-import { useUserData } from "../components/utils/Context";
-import { useEffect, useState } from "react";
 
 export default function Dashboard() {
 

@@ -1,10 +1,12 @@
 import { Input } from "../components/ui/index";
 import React, { useState } from "react";
+import { Button } from "../components/ui/index";
 
 export default function Records() {
   const [selectedOption, setSelectedOption] = useState("Newest first");
   const [isOpen, setIsOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
+  const [toggle, setToggle] = useState("expense");
 
   const handleOptionSelect = (option) => {
     setSelectedOption(option);
@@ -16,6 +18,9 @@ export default function Records() {
 
   const handleCloseModal = () => {
     setOpenModal(!openModal);
+  };
+  const handleToggle = (toggle) => {
+    setToggle(toggle);
   };
 
   return (
@@ -92,10 +97,10 @@ export default function Records() {
               </svg>
             </button>
             {openModal && (
-              <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+              <div className="fixed inset-0 z-[2] bg-black bg-opacity-50 flex justify-center items-center">
                 <div className="bg-white w-[744px] p-8 rounded-lg">
                   {/* Add record and Close */}
-                  <div className="px-6 py-5 flex justify-between items-center">
+                  <div className="flex justify-between items-center">
                     <p className="font-bold text-xl">Add Record</p>
                     <button onClick={handleCloseModal}>
                       <svg
@@ -112,71 +117,103 @@ export default function Records() {
                       </svg>
                     </button>
                   </div>
-                  <div>
-                    {/* expense or income choose */}
-                    <div class="flex justify-between w-48 relative">
-                      <button
-                        id="expense-btn"
-                        class="absolute z-[1] toggle-button bg-primary text-white hover:bg-blue-700 py-2 px-4 rounded-full"
-                      >
-                        Expense
-                      </button>
-                      <button
-                        id="income-btn"
-                        class="absolute right-3 toggle-button bg-gray-200 text-black hover:bg-gray-300 py-2 pr-4 pl-12 rounded-full"
-                      >
-                        Income
-                      </button>
-                    </div>
-                    <div className="mt-14">
-                      <div>
-                        <p className="text-base">Amount</p>
-                        <div className="relative">
-                          <p className="absolute text-base bottom-3 left-3 text-gray-400">
-                            ₮
-                          </p>
-                          <Input
-                            type={"text"}
-                            placeholder={"000.00"}
-                            addClass={"pl-8"}
-                          ></Input>
-                        </div>
-                      </div>
-                      <div>
-                        {/* Category */}
-                        <p>Category</p>
-                        <select
-                          name="category"
-                          id="vategory"
-                          className="select select-bordered"
+                  <div className="flex gap-12 mt-5">
+                    {/* left */}
+                    <div class="flex flex-1 flex-col w-48 mb-5 relative">
+                      {/* toggle button */}
+                      <div className="flex relative justify-center">
+                        {/* Expense Button */}
+                        <button
+                          className={`z-[1] transition-colors duration-300 ${
+                            toggle === "expense"
+                              ? "bg-primary text-white hover:bg-blue-700"
+                              : "bg-gray-200 text-black"
+                          } py-2 px-4 rounded-full`}
+                          onClick={() => handleToggle("expense")}
                         >
-                          <option value="" disabled selected>
-                            Choose
-                          </option>
-                        </select>
+                          Expense
+                        </button>
+                        {/* Income Button */}
+                        <button
+                          className={`z-[1] transition-colors duration-300 ${
+                            toggle === "income"
+                              ? "bg-accent text-white hover:bg-green-700"
+                              : "bg-gray-200 text-black"
+                          } py-2 px-4 rounded-full`}
+                          onClick={() => handleToggle("income")}
+                        >
+                          Income
+                        </button>
+                        <div className="bg-gray-200 w-[50px] absolute h-full"></div>
+                      </div>
+                      {/* Amount */}
+                      <div className="mt-14 w-full">
+                        <div>
+                          <div className="relative">
+                            <p className="text-base absolute bottom-12 left-4">
+                              Amount
+                            </p>
+                            <p className="absolute text-lg bottom-5 left-4 text-gray-400">
+                              ₮
+                            </p>
+                            <Input
+                              type={"text"}
+                              placeholder={"000.00"}
+                              addClass={"pl-8 w-full mt-2 pt-3 h-[80px]"}
+                            ></Input>
+                          </div>
+                        </div>
+                        {/* Category */}
+                        <div className="mt-4">
+                          <p>Category</p>
+                          <select
+                            name="category"
+                            id="vategory"
+                            className="select select-bordered w-full mt-1 bg-gray-100"
+                          >
+                            <option value="" disabled selected>
+                              Choose
+                            </option>
+                          </select>
+                        </div>
+                        <div>
+                          {/* Date */}
+                          <div className="mt-4 mb-6">
+                            <p>Date</p>
+                            <input
+                              type="date"
+                              className="input input-bordered mt-1 w-full bg-gray-100"
+                            />
+                          </div>
+                        </div>
+                        <Button
+                          text="Add Record"
+                          addClass={
+                            toggle === "expense"
+                              ? "bg-primary"
+                              : "bg-accent hover:bg-green-700"
+                          }
+                        ></Button>
+                      </div>
+                    </div>
+                    {/* right */}
+                    <div className="flex-1 flex flex-col gap-5">
+                      <div>
+                        <p>Payee</p>
+                        <Input
+                          placeholder={"Write here"}
+                          addClass={"w-full mt-1"}
+                        ></Input>
                       </div>
                       <div>
-                        <div>
-                          <p>Date</p>
-                          <select name="date" id="date">
-                            <option value=""></option>
-                          </select>
-                        </div>
-                        <div>
-                          {/* Hour */}
-                          <p>Hour</p>
-                          <select
-                            name="hour"
-                            id="hour"
-                            className="select select-bordered"
-                          >
-                            <option value=""></option>
-                          </select>
-                        </div>
+                        <p>Note</p>
+                        <textarea
+                          className="border resize-none mt-1 rounded-lg bg-gray-100 border-gray-300 w-full h-full"
+                          rows="10"
+                        ></textarea>
                       </div>
                     </div>
                   </div>
-                  <div></div>
                 </div>
               </div>
             )}

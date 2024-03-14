@@ -6,29 +6,8 @@ import { userSchema } from "../validations/UserValidation";
 import { useUserData } from "../utils/Context";
 
 export function SignUpSection() {
-  const { userData, setUserData } = useUserData();
   const createUser = async (event) => {
-    // event.preventDefault();
     const isValid = await userSchema.isValid(userData);
-    // try {
-    //   console.log(data);
-    //   const response = await fetch("http://localhost:8080/api/signup", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({ ...data }),
-    //   });
-
-    //   if (response.ok) {
-    //     const responseData = await response.json();
-    //     console.log(responseData);
-    //   } else {
-    //     throw new Error("Failed to create new user");
-    //   }
-    // } catch (error) {
-    //   console.error("Error:", error);
-    // }
   };
 
   return (
@@ -74,7 +53,7 @@ export function SignUpSection() {
           type={"password"}
         />
         <Link href="/Currency">
-          <Button text={"Sign up"} onClick={createUser} />
+          <Button text={"Sign up"} addClass={"bg-primary"} onClick={createUser} />
         </Link>
       </div>
       <p className="text-center">
