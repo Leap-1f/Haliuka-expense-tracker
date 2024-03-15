@@ -10,7 +10,10 @@ export const ContextProvider = ({ children }) => {
     repassword: "",
   });
   const [loading, setLoading] = useState(false);
-
+  
+  // function numberWithCommas(x) {
+  //   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  // }
   const value = {
     userData,
     setUserData,
@@ -19,10 +22,10 @@ export const ContextProvider = ({ children }) => {
   };
 
   return (
-    <StateContext.Provider value={value}>{children}</StateContext.Provider>
+    <StateContext.Provider value={ value }>
+      {children}
+    </StateContext.Provider>
   );
 };
 
-export const useData = () => {
-  return useContext(StateContext);
-};
+export const useData = () => useContext(StateContext);

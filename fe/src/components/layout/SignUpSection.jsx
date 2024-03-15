@@ -3,9 +3,10 @@ import Logo from "../ui/Logo";
 import Button from "../ui/Button";
 import Link from "next/link";
 import { userSchema } from "../validations/UserValidation";
-import { useUserData } from "../utils/Context";
+import { useData } from "../utils/Context";
 
 export function SignUpSection() {
+  const {userData, setUserData} = useData();
   const createUser = async (event) => {
     const isValid = await userSchema.isValid(userData);
   };

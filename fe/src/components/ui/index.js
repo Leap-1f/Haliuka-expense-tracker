@@ -3,3 +3,4 @@ export { default as Input } from "./Input";
 export { default as Logo } from "./Logo";
 export { default as Text } from "./Text";
 export { default as Navbar } from "./Navbar";
+export {default as Icons} from "./Icons";
