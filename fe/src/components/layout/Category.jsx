@@ -1,6 +1,10 @@
 import { Icons } from "../ui/index";
 import { useState } from "react";
+import { useData } from "../utils/Context";
+
 export function Category() {
+  const { renderIcon } = useData();
+
   const [categories, setCategories] = useState(Icons);
   const addCategory = async (category) => {
     try {
@@ -25,12 +29,6 @@ export function Category() {
   const categoryToAdd = {
     name: "New Category",
     description: "Description of the new category",
-    // Other properties...
-  };
-
-  const renderIcon = (iconName, color) => {
-    const Icon = iconName;
-    return <Icon className={`h-5 w-5 ${color}`} />;
   };
 
   addCategory(categoryToAdd);
@@ -43,7 +41,10 @@ export function Category() {
       </div>
       <div className="flex flex-col gap-2">
         {Icons.map((category, index) => (
-          <div key={index} className="flex justify-between items-center">
+          <div
+            key={index}
+            className="flex justify-between hover:bg-gray-100 rounded-lg items-center"
+          >
             <div className="flex gap-2 items-center">
               <div>{renderIcon(category.iconName, category.color)}</div>
               <p>{category.name}</p>

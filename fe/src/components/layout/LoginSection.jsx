@@ -12,41 +12,12 @@ export function LoginSection() {
     email: "",
     password: "",
   });
-  const [error, setError] = useState("");
 
-  const loginUser = async () => {
-    setLoading(true);
-    try {
-      const fetchPromise = await fetch("http://localhost:8080/api/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ ...data }),
-      });
+  const handleLogin = async (event) => {
+    event.preventDefault();
 
-      const delayPromise = new Promise((resolve) => setTimeout(resolve, 3000));
-
-      const [response] = await Promise.all([fetchPromise, delayPromise]);
-
-      if (response.ok) {
-        const responseData = await response.json();
-      router.push("/dashboard");
-      } else {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "Invalid email or password");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      setError(error.message);
-    } finally {
-      setLoading(false);
-    }
+    router.push("/dashboard");
   };
-
-  if (loading) {
-    return <Loading />;
-  }
 
   return (
     <div className="w-[384px] flex flex-col gap-10 flex-1 justify-center items-center">
@@ -61,7 +32,10 @@ export function LoginSection() {
           addClass={"text-slate-700"}
         />
       </div>
-      <div className="flex flex-col gap-4 w-[384px] px-4 sm:px-0">
+      <form
+        onSubmit={handleLogin}
+        className="flex flex-col gap-4 w-[384px] px-4 sm:px-0"
+      >
         <Input
           addClass={"w-full"}
           name="email"
@@ -76,8 +50,8 @@ export function LoginSection() {
           placeholder={"Password"}
           type={"password"}
         />
-        <Button text={"Log in"} addClass={"bg-primary"} onClick={loginUser} />
-      </div>
+        <Button text={"Log in"} addClass={"bg-primary"} />
+      </form>
       <p className="text-center">
         Don't have an account?{" "}
         <Link href="/signup">

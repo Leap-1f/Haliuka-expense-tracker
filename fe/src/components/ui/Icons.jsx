@@ -11,9 +11,9 @@ import {
   MdAttachMoney,
   MdTrendingUp,
 } from "react-icons/md";
-import { FaShoppingBasket } from "react-icons/fa";
+import { FaShoppingBasket, FaPlusCircle } from "react-icons/fa";
 
-const Icons = [
+export const Icons = [
   { name: "Daily necessities", iconName: IoMdCart, color: "text-red-400" },
   { name: "Bills", iconName: MdReceipt, color: "text-yellow-400" },
   { name: "Transportation", iconName: MdDirectionsCar, color: "text-blue-400" },
@@ -26,4 +26,6 @@ const Icons = [
   { name: "Other", iconName: IoIosMore, color: "text-gray-500" },
 ];
 
-export default Icons;
+export const AddIcon = [
+  { name: "Add new category", iconName: FaPlusCircle, color: "text-blue-600" },
+];

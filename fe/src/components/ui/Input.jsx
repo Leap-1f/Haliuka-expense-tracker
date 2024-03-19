@@ -1,4 +1,4 @@
-const Input = ({ type, placeholder, text, addClass, name, onChange, value }) => {
+const Input = ({ type, placeholder, onBlur, text, addClass, name, onChange, value }) => {
   return (
     <div>
       <input
@@ -8,6 +8,7 @@ const Input = ({ type, placeholder, text, addClass, name, onChange, value }) => 
         onChange={onChange}
         placeholder={placeholder}
         className={`input input-bordered bg-gray-100 ${addClass}`}
+        onBlur={onBlur}
       >
         {text}
       </input>

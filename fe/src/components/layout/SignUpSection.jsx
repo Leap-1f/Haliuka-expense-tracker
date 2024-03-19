@@ -1,15 +1,23 @@
-import Input from "../ui/Input";
-import Logo from "../ui/Logo";
-import Button from "../ui/Button";
+import { Logo, Button, Input } from "../ui/index";
 import Link from "next/link";
-import { userSchema } from "../validations/UserValidation";
-import { useData } from "../utils/Context";
+import { useFormik } from "formik";
+import { signUpSchema } from "../validation/validations";
+
+const initialValues = {
+  name: "",
+  email: "",
+  password: "",
+  rePassword: "",
+};
 
 export function SignUpSection() {
-  const {userData, setUserData} = useData();
-  const createUser = async (event) => {
-    const isValid = await userSchema.isValid(userData);
-  };
+  const { values, handleBlur, handleChange, handleSubmit, errors } = useFormik({
+    initialValues: initialValues,
+    validationSchema: signUpSchema,
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
 
   return (
     <div className="w-[384px] flex flex-col gap-10 flex-1 justify-center items-center">
@@ -24,39 +32,59 @@ export function SignUpSection() {
           Sign up below to create your Wallet account
         </p>
       </div>
-      <div className="flex flex-col gap-4 w-[384px] px-4 sm:px-0">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col gap-4 w-[384px] px-4 sm:px-0"
+      >
         <Input
-          addClass={"w-full"}
+          addClass={"w-full invalid:focus:bg-pink-700"}
           name="name"
-          onChange={(ev) => setUserData({ ...userData, name: ev.target.value })}
+          value={values.name}
+          onChange={handleChange}
+          onBlur={handleBlur}
           placeholder={"Name"}
           type={"text"}
         />
+        {errors.name && <small className="text-pink-600">{errors.name}</small>}
         <Input
           addClass={"w-full"}
           name="email"
-          onChange={(ev) => setUserData({ ...userData, email: ev.target.value })}
+          value={values.email}
+          onChange={handleChange}
+          onBlur={handleBlur}
           placeholder={"Email"}
           type={"email"}
         />
+        {errors.email && (
+          <small className="text-pink-600">{errors.email}</small>
+        )}
         <Input
           addClass={"w-full"}
           name="password"
-          onChange={(ev) => setUserData({ ...userData, password: ev.target.value })}
+          value={values.password}
+          onChange={handleChange}
+          onBlur={handleBlur}
           placeholder={"Password"}
           type={"password"}
         />
+        {errors.password && (
+          <small className="text-pink-600">{errors.password}</small>
+        )}
         <Input
-          name="repassword"
-          onChange={(ev) => setUserData({ ...userData, repassword: ev.target.value })}
           addClass={"w-full"}
+          name="repassword"
+          value={values.rePassword}
+          // onChange={handleChange}
+          // onBlur={handleBlur}
           placeholder={"Repeat password"}
           type={"password"}
         />
-        <Link href="/currency">
-          <Button text={"Sign up"} addClass={"bg-primary"} onClick={createUser} />
-        </Link>
-      </div>
+        {errors.rePassword && (
+          <small className="text-pink-600">{errors.rePassword}</small>
+        )}
+        <Button type="submit" text={"Sign up"} addClass={"bg-primary"} />
+      </form>
+
       <p className="text-center">
         Already have an account?{" "}
         <Link href="/">

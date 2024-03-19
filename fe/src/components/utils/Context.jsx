@@ -11,14 +11,49 @@ export const ContextProvider = ({ children }) => {
   });
   const [loading, setLoading] = useState(false);
   
-  // function numberWithCommas(x) {
-  //   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  // }
+  const [toggle, setToggle] = useState("expense");
+  const [state, setState] = useState({
+    selectedOption: "Newest first",
+    isOpen: false,
+    openModal: false,
+  });
+
+  const handleSubmit = () => {
+    
+  }
+
+  const handleOptionSelect = (option) => {
+    setState({ selectedOption: option, isOpen: false });
+  };
+  const handleOpenModal = () => {
+    setState({ openModal: !state.openModal });
+  };
+
+  const handleCloseModal = () => {
+    setState({ openModal: !state.openModal });
+  };
+  const handleToggle = (toggle) => {
+    setToggle(toggle);
+  };
+  const renderIcon = (iconName, color) => {
+    const Icon = iconName;
+    return <Icon className={`h-5 w-5 ${color}`} />;
+  };
+
   const value = {
     userData,
     setUserData,
     loading,
     setLoading,
+    handleOptionSelect,
+    handleOpenModal,
+    handleCloseModal,
+    handleToggle,
+    toggle,
+    setToggle,
+    state,
+    setState,
+    renderIcon
   };
 
   return (
