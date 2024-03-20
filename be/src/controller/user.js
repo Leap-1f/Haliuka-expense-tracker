@@ -1,15 +1,6 @@
 import { sql } from "../../config/database.js";
 import bcrypt from "bcrypt";
 
-export const getOneUser = async (req, res) => {
-  try {
-    const result = await sql`SELECT * FROM users`;
-    res.send(result);
-  } catch (err) {
-    console.log(err);
-  }
-};
-
 export const addNewUser = async (req, res) => {
   const newUser = req.body;
   const salt = bcrypt.genSaltSync(1);
@@ -32,15 +23,16 @@ export const loginUser = async (req, res) => {
       return res.status(404).send("User not found");
     }
     const isValid = await bcrypt.compare(password, data[0].password);
+    console.log(data[0].id);
     if (isValid) {
       res.status(200).send({
-        user: { email: data.email, password: data.password },
-      });
+        sucess: true,
+        userId: data[0].id });
     } else {
       res.status(401).send("Invalid email or password");
     }
   } catch (error) {
-    console.error("Error:", error);
+    console.error("Backend error:", error);
     res.status(500).json({ error: "server error" });
   }
 };

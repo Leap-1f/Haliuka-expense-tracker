@@ -1,22 +1,33 @@
 import { Navbar } from "../components/ui/index";
+import { useData } from "@/components/utils/Context";
+import { useEffect } from "react";
 
 export default function Dashboard() {
+  const { userId, setUserId, transactions, setTransactions } = useData();
 
-  // const fetchUserData = async () => {
-  //   try {
-  //     const response = await fetch("http://localhost:8080/api/login", {
-  //       method: "GET",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //     });
-  //     if (!response.ok) {
-  //       throw new Error("Failed to fetch user data");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error:", error);
-  //   }
-  // };
+  const fetchUserTransaction = async () => {
+    try {
+      const res = await fetch("http://localhost:8080/api/transaction", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userId: userId }),
+      });
+      if (!res.ok) {
+        throw new Error("Failed to fetch user transaction");
+      }
+      const response = await res.json();
+      setTransactions(response)
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+  console.log(transactions);
+
+  useEffect(() => {
+    fetchUserTransaction();
+  }, []);
 
   return (
     <div>
