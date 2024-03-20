@@ -2,20 +2,29 @@ import { Logo, Button, Input } from "../ui/index";
 import Link from "next/link";
 import { useFormik } from "formik";
 import { signUpSchema } from "../validation/validations";
+import { useData } from "../utils/Context";
+import Router from "next/router";
 
-const initialValues = {
-  name: "",
-  email: "",
-  password: "",
-  rePassword: "",
-};
+export const SignupForm = () => {
+  const { setUserData } = useData();
 
-export function SignUpSection() {
-  const { values, handleBlur, handleChange, handleSubmit, errors } = useFormik({
-    initialValues: initialValues,
+  const initialValues = {
+    name: "",
+    email: "",
+    password: "",
+    rePassword: "",
+  };
+
+  const formik = useFormik({
+    initialValues,
     validationSchema: signUpSchema,
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: async (values) => {
+      try {
+        setUserData(values);
+        Router.push("/currency");
+      } catch (err) {
+        console.error("Signup failed" + err);
+      }
     },
   });
 
@@ -33,58 +42,59 @@ export function SignUpSection() {
         </p>
       </div>
       <form
-        onSubmit={handleSubmit}
+        onSubmit={formik.handleSubmit}
         className="flex flex-col gap-4 w-[384px] px-4 sm:px-0"
       >
         <Input
-          addClass={"w-full invalid:focus:bg-pink-700"}
+          addClass={"w-full"}
           name="name"
-          value={values.name}
-          onChange={handleChange}
-          onBlur={handleBlur}
+          value={formik.values.name}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
           placeholder={"Name"}
           type={"text"}
         />
-        {errors.name && <small className="text-pink-600">{errors.name}</small>}
+        {formik.errors.name && (
+          <small className=" text-pink-600">{formik.errors.name}</small>
+        )}
         <Input
           addClass={"w-full"}
           name="email"
-          value={values.email}
-          onChange={handleChange}
-          onBlur={handleBlur}
+          value={formik.values.email}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
           placeholder={"Email"}
           type={"email"}
         />
-        {errors.email && (
-          <small className="text-pink-600">{errors.email}</small>
+        {formik.errors.email && (
+          <small className="text-pink-600">{formik.errors.email}</small>
         )}
         <Input
           addClass={"w-full"}
           name="password"
-          value={values.password}
-          onChange={handleChange}
-          onBlur={handleBlur}
+          value={formik.values.password}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
           placeholder={"Password"}
           type={"password"}
         />
-        {errors.password && (
-          <small className="text-pink-600">{errors.password}</small>
+        {formik.errors.password && (
+          <small className="text-pink-600">{formik.errors.password}</small>
         )}
         <Input
           addClass={"w-full"}
-          name="repassword"
-          value={values.rePassword}
-          // onChange={handleChange}
-          // onBlur={handleBlur}
+          name="rePassword"
+          value={formik.values.rePassword}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
           placeholder={"Repeat password"}
           type={"password"}
         />
-        {errors.rePassword && (
-          <small className="text-pink-600">{errors.rePassword}</small>
+        {formik.errors.rePassword && (
+          <small className="text-pink-600">{formik.errors.rePassword}</small>
         )}
         <Button type="submit" text={"Sign up"} addClass={"bg-primary"} />
       </form>
-
       <p className="text-center">
         Already have an account?{" "}
         <Link href="/">
@@ -93,4 +103,4 @@ export function SignUpSection() {
       </p>
     </div>
   );
-}
+};

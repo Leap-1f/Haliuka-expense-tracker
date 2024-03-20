@@ -9,7 +9,10 @@ export const ContextProvider = ({ children }) => {
     password: "",
     repassword: "",
   });
-  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState({
+    email: "",
+    password: "",
+  });
   
   const [toggle, setToggle] = useState("expense");
   const [state, setState] = useState({
@@ -17,10 +20,6 @@ export const ContextProvider = ({ children }) => {
     isOpen: false,
     openModal: false,
   });
-
-  const handleSubmit = () => {
-    
-  }
 
   const handleOptionSelect = (option) => {
     setState({ selectedOption: option, isOpen: false });
@@ -43,8 +42,8 @@ export const ContextProvider = ({ children }) => {
   const value = {
     userData,
     setUserData,
-    loading,
-    setLoading,
+    data,
+    setData,
     handleOptionSelect,
     handleOpenModal,
     handleCloseModal,

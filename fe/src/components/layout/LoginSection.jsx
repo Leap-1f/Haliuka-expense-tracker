@@ -1,17 +1,20 @@
 import { Button, Input, Text, Logo } from "../ui/index";
-import { Loading } from "./index";
 import Link from "next/link";
-import { useState } from "react";
+import { loginSchema } from "../validation/validations";
 import { useRouter } from "next/router";
 import { useData } from "../utils/Context";
+import { useFormik } from "formik";
+
 
 export function LoginSection() {
-  const { loading, setLoading } = useData();
+  const { data, setData } = useData();
   const router = useRouter();
-  const [data, setData] = useState({
+
+  const initialValues = {
     email: "",
-    password: "",
-  });
+    password: ""
+  }
+  
 
   const handleLogin = async (event) => {
     event.preventDefault();

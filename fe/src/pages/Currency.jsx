@@ -23,7 +23,6 @@ export default function Currency() {
           currency_type: currency,
           amount: amount,
         };
-        console.log(userDataToSend);
         const response = await fetch("http://localhost:8080/api/signup", {
           method: "POST",
           headers: {
@@ -31,7 +30,9 @@ export default function Currency() {
           },
           body: JSON.stringify(userDataToSend),
         });
-  
+        if (response.ok) {
+          console.log("user created successfully");
+        }
         if (!response.ok) throw new Error("Failed to create new user");
         const responseData = await response.json();
         setStep(3);
