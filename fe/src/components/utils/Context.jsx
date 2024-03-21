@@ -13,7 +13,6 @@ export const ContextProvider = ({ children }) => {
     email: "",
     password: "",
   });
-  const [userId, setUserId] = useState("");
   
   const [toggle, setToggle] = useState("expense");
   const [state, setState] = useState({
@@ -22,7 +21,7 @@ export const ContextProvider = ({ children }) => {
     openModal: false,
   });
 
-  const [transactions, setTransactions] = useState("");
+  const [transactions, setTransactions] = useState([]);
 
   const handleOptionSelect = (option) => {
     setState({ selectedOption: option, isOpen: false });
@@ -56,8 +55,6 @@ export const ContextProvider = ({ children }) => {
     state,
     setState,
     renderIcon,
-    setUserId,
-    userId,
     setTransactions,
     transactions
   };

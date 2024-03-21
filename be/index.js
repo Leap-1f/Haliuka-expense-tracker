@@ -2,12 +2,21 @@ import express from "express";
 import cors from "cors";
 import { user } from "./src/router/user.js";
 import { category } from "./src/router/category.js";
-import {transaction} from "./src/router/transaction.js"
+import {transaction} from "./src/router/transaction.js";
+import session from 'express-session';
+
 
 const port = 8080;
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+
+app.use(session({
+  secret: 'your-secret-key',
+  resave: false,
+  saveUninitialized: false
+}));
 
 app.use("/api", user, category, transaction);
 

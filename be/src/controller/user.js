@@ -1,5 +1,7 @@
 import { sql } from "../../config/database.js";
 import bcrypt from "bcrypt";
+import session from "express-session";
+
 
 export const addNewUser = async (req, res) => {
   const newUser = req.body;
@@ -23,10 +25,11 @@ export const loginUser = async (req, res) => {
       return res.status(404).send("User not found");
     }
     const isValid = await bcrypt.compare(password, data[0].password);
-    console.log(data[0].id);
+
     if (isValid) {
+      // req.session.userId = data[0].id;
       res.status(200).send({
-        sucess: true,
+        success: true,
         userId: data[0].id });
     } else {
       res.status(401).send("Invalid email or password");

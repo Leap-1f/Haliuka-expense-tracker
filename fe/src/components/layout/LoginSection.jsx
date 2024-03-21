@@ -7,7 +7,7 @@ import { useFormik } from "formik";
 import Router from "next/router";
 
 export function LoginSection() {
-  const { data, setData, setUserId } = useData();
+  const { data, setData } = useData();
   const router = useRouter();
 
   const initialValues = {
@@ -29,14 +29,14 @@ export function LoginSection() {
           body: JSON.stringify(values),
         });
         const response = await res.json();
-        if (response.sucess) {
-          setUserId(response.userId);
+        if (response.success) {
+          sessionStorage.setItem("userId", response.userId);
           router.push("/dashboard")
         } else {
-          console.error("Login failed: ", response.error);
+          console.error("Backend error: ", response.error);
         }
       } catch (err) {
-        console.error("Login failed: ", err);
+        console.error("Network error: ", err);
       }
     },
   });
