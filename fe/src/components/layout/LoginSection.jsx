@@ -4,7 +4,6 @@ import { loginSchema } from "../validation/validations";
 import { useRouter } from "next/router";
 import { useData } from "../utils/Context";
 import { useFormik } from "formik";
-import Router from "next/router";
 
 export function LoginSection() {
   const { data, setData } = useData();
@@ -30,7 +29,9 @@ export function LoginSection() {
         });
         const response = await res.json();
         if (response.success) {
-          sessionStorage.setItem("userId", response.userId);
+          console.log(response.userId);
+          window.localStorage.setItem("userId", response.userId);
+          window.localStorage.setItem("loggedIn", response.isAuth);
           router.push("/dashboard")
         } else {
           console.error("Backend error: ", response.error);
@@ -41,11 +42,6 @@ export function LoginSection() {
     },
   });
 
-  const handleLogin = async (event) => {
-    event.preventDefault();
-
-    router.push("/dashboard");
-  };
 
   return (
     <div className="w-[384px] flex flex-col gap-10 flex-1 justify-center items-center">

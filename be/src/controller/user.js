@@ -2,7 +2,6 @@ import { sql } from "../../config/database.js";
 import bcrypt from "bcrypt";
 import session from "express-session";
 
-
 export const addNewUser = async (req, res) => {
   const newUser = req.body;
   const salt = bcrypt.genSaltSync(1);
@@ -27,10 +26,11 @@ export const loginUser = async (req, res) => {
     const isValid = await bcrypt.compare(password, data[0].password);
 
     if (isValid) {
-      // req.session.userId = data[0].id;
       res.status(200).send({
         success: true,
-        userId: data[0].id });
+        isAuth: true,
+        userId: data[0].id,
+      });
     } else {
       res.status(401).send("Invalid email or password");
     }

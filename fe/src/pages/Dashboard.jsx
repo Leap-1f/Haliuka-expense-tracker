@@ -1,34 +1,28 @@
+import { TransactionLog } from "@/components/layout";
 import { Navbar } from "../components/ui/index";
 import { useData } from "@/components/utils/Context";
-import { useEffect } from "react";
-import { TransactionLog } from "../components/layout/index";
+import { useEffect, useState } from "react";
 
 export default function Dashboard() {
   const { transactions, setTransactions } = useData();
-  // const userId = window.sessionStorage.getItem('userId');
-
-
-  const fetchUserTransaction = async () => {
-    try {
-      const res = await fetch("http://localhost:8080/api/transaction", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ userId: userId }),
-      });
-      if (!res.ok) {
-        throw new Error("Failed to fetch user transaction");
-      }
-      const response = await res.json();
-      console.log(response);
-      setTransactions(response);
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
 
   useEffect(() => {
+    const fetchUserTransaction = async () => {
+      const userId = localStorage.getItem("userId");
+      try {
+        const res = await fetch("http://localhost:8080/api/transaction", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ userId: userId }),
+        });
+        const response = await res.json();
+        setTransactions(response);
+      } catch (err) {
+        console.error("Backend error:", err);
+      }
+    };
     fetchUserTransaction();
   }, []);
 
@@ -121,7 +115,7 @@ export default function Dashboard() {
           </div>
           {/* Section 3 */}
           <div className="bg-white rounded-xl">
-            <div className="p-6">Last Records</div>
+            <div className="p-6 border-b">Last Records</div>
             <TransactionLog />
           </div>
         </div>

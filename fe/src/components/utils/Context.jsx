@@ -13,13 +13,14 @@ export const ContextProvider = ({ children }) => {
     email: "",
     password: "",
   });
-  
+
   const [toggle, setToggle] = useState("expense");
   const [state, setState] = useState({
     selectedOption: "Newest first",
     isOpen: false,
     openModal: false,
   });
+  const [loading, setLoading] = useState(true);
 
   const [transactions, setTransactions] = useState([]);
 
@@ -56,13 +57,13 @@ export const ContextProvider = ({ children }) => {
     setState,
     renderIcon,
     setTransactions,
-    transactions
+    transactions,
+    loading,
+    setLoading,
   };
 
   return (
-    <StateContext.Provider value={ value }>
-      {children}
-    </StateContext.Provider>
+    <StateContext.Provider value={value}>{children}</StateContext.Provider>
   );
 };
 
